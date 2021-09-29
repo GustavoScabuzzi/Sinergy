@@ -15,6 +15,9 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+//Autor:Pablo
+//Data:29/09/2021
+
 @Entity 
 @Table(name = "postagem")
 public class Postagem {
