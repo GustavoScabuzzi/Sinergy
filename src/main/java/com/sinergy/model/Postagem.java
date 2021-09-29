@@ -1,4 +1,4 @@
-package org.generation.sinergy.model;
+package com.sinergy.model;
 
 import java.util.Date;
 
@@ -14,6 +14,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+//Autor:Pablo
+//Data:29/09/2021
 
 @Entity 
 @Table(name = "postagem")
