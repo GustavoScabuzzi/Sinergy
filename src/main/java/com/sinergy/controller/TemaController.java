@@ -21,7 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sinergy.model.Tema;
 import com.sinergy.repository.RepositorioTema;
 
-
+/**
+ * Nomeação tema controller
+ * @author Daniel
+ * @since 1.0
+ *
+ */
 
 @RestController
 @RequestMapping("/api/v1/tema")
