@@ -9,7 +9,7 @@ import com.sinergy.model.Tema;
 public interface RepositorioTema extends JpaRepository<Tema, Long> {
 	
 	public List<Tema> findAllByDoacaoContainingIgnoreCase(Boolean doacao);
-	public List<Tema> findAllByVoluntarioContainingIgnoreCase(Boolean voluntario);
+	public List<Tema> findAllByVoluntariadoContainingIgnoreCase(Boolean voluntariado);
 	public List<Tema> findAllByInformativoContainingIgnoreCase(Boolean informativo);
 	public List<Tema> findAllByAnyContainingIgnoreCase(Boolean any);
 	

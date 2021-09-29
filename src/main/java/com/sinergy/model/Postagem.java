@@ -78,10 +78,12 @@ public class Postagem {
 		this.date = date;
 	}
 
-	/*
-	 * public Tema getTema() { return tema; }
-	 * 
-	 * 
-	 * public void setTema(Tema tema) { this.tema = tema; }
-	 */
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
 }

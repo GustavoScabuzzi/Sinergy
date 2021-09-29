@@ -24,7 +24,8 @@ import com.sinergy.repository.RepositorioTema;
  * Controlador de Tema
  * 
  * @author George
- * @sice 1.0
+ * @since 1.0
+ * @date 29/09/2021
  */
 
 @RestController
