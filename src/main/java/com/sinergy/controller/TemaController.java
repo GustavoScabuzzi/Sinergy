@@ -1,6 +1,5 @@
 package com.sinergy.controller;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +21,9 @@ import com.sinergy.model.Tema;
 import com.sinergy.repository.RepositorioTema;
 
 /**
- * Nomeação tema controller
- * @author Daniel
+ * Controlador de Tema
+ * 
+ * @author George
  * @since 1.0
  * @date 29/09/2021
  */
@@ -58,25 +58,25 @@ public class TemaController {
 	}
 
 	@GetMapping("/doacao/{doacao}")
-    public ResponseEntity<List<Tema>> GetByDoacao(@PathVariable Boolean doacao){
-        return ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(doacao));
-    }
-	
+	public ResponseEntity<List<Tema>> GetByDoacao(@PathVariable Boolean doacao) {
+		return ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(doacao));
+	}
+
 	@GetMapping("/voluntariado/{voluntariado}")
-    public ResponseEntity<List<Tema>> GetByVoluntariado(@PathVariable Boolean voluntariado){
-        return ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(voluntariado));
-    }
-	
+	public ResponseEntity<List<Tema>> GetByVoluntariado(@PathVariable Boolean voluntariado) {
+		return ResponseEntity.ok(repositorio.findAllByVoluntariadoContainingIgnoreCase(voluntariado));
+	}
+
 	@GetMapping("/informativo/{informativo}")
-    public ResponseEntity<List<Tema>> GetByInformativo(@PathVariable Boolean informativo){
-        return ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(informativo));
-    }
-	
+	public ResponseEntity<List<Tema>> GetByInformativo(@PathVariable Boolean informativo) {
+		return ResponseEntity.ok(repositorio.findAllByInformativoContainingIgnoreCase(informativo));
+	}
+
 	@GetMapping("/any/{any}")
-    public ResponseEntity<List<Tema>> GetByAny(@PathVariable Boolean any){
-        return ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(any));
-    }
-	
+	public ResponseEntity<List<Tema>> GetByAny(@PathVariable Boolean any) {
+		return ResponseEntity.ok(repositorio.findAllByAnyContainingIgnoreCase(any));
+	}
+
 	@PostMapping("/salvar")
 	public ResponseEntity<Tema> salvar(@Valid @RequestBody Tema novoTema) {
 		return ResponseEntity.status(201).body(repositorio.save(novoTema));
