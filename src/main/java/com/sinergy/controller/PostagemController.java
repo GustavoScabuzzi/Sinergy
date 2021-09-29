@@ -1,9 +1,10 @@
 package com.sinergy.controller;
+
 /**
  * Classe Controlador com metodos CRUD
  * 
  * @author gustavo
- * 
+ * @since 1.0
  */
 import java.util.List;
 import java.util.Optional;
@@ -42,31 +43,31 @@ public class PostagemController {
 	public ResponseEntity<Postagem> GetById(@PathVariable long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-	
+
 	@GetMapping("/legenda/{legenda}")
-	public ResponseEntity<List<Postagem>> GetByLegenda(@PathVariable String legenda){
+	public ResponseEntity<List<Postagem>> GetByLegenda(@PathVariable String legenda) {
 		return ResponseEntity.ok(repository.findAllByLegendaContainingIgnoreCase(legenda));
 	}
-	
+
 	@GetMapping("/editado/{editado}")
-	public ResponseEntity<List<Postagem>> GetByEditado(@PathVariable Boolean editado){
+	public ResponseEntity<List<Postagem>> GetByEditado(@PathVariable Boolean editado) {
 		return ResponseEntity.status(201).body(repository.findAllByEditadoContainingIgnoreCase(editado));
 	}
-	
+
 	@PostMapping("/salvar")
-	public ResponseEntity<Postagem> salvar(@Valid @RequestBody Postagem novaPostagem){
+	public ResponseEntity<Postagem> salvar(@Valid @RequestBody Postagem novaPostagem) {
 		return ResponseEntity.status(201).body(repository.save(novaPostagem));
 	}
-	
+
 	@PutMapping("/atualizar")
-	public ResponseEntity<Postagem> atualizar(@Valid @RequestBody Postagem atualizarPostagem){
+	public ResponseEntity<Postagem> atualizar(@Valid @RequestBody Postagem atualizarPostagem) {
 		return ResponseEntity.status(201).body(repository.save(atualizarPostagem));
 	}
-	
+
 	@DeleteMapping("/deletar/{id}")
-	public ResponseEntity<Postagem> deletar(@PathVariable(value = "id") Long idPostagem){
+	public ResponseEntity<Postagem> deletar(@PathVariable(value = "id") Long idPostagem) {
 		Optional<Postagem> objetoOptional = repository.findById(idPostagem);
-		
+
 		if (objetoOptional.isPresent()) {
 			repository.deleteById(idPostagem);
 			return ResponseEntity.status(204).build();
