@@ -15,82 +15,73 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-//Autor:Pablo
-//Data:29/09/2021
+/**
+ * Criacao da tabela do SQL
+ * 
+ * @author Pablo
+ * @sice 1.0
+ * @date 29/09/2021
+ */
 
-@Entity 
+@Entity
 @Table(name = "postagem")
 public class Postagem {
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	
-	@NotNull 
+
+	@NotNull
 	@Size(min = 5, max = 100)
 	private String titulo;
-	
+
 	@NotNull
 	@Size(min = 10, max = 100)
 	private String texto;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
-	
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
-	//private Tema tema;
-
+	private Tema tema;
 
 	public long getId() {
 		return id;
 	}
 
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
 
 	public String getTexto() {
 		return texto;
 	}
 
-
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-
 
 	public Date getDate() {
 		return date;
 	}
 
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
-/*
-	public Tema getTema() {
-		return tema;
-	}
-
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
-*/
+	/*
+	 * public Tema getTema() { return tema; }
+	 * 
+	 * 
+	 * public void setTema(Tema tema) { this.tema = tema; }
+	 */
 }
