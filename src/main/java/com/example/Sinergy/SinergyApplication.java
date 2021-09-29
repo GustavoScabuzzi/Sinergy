@@ -9,6 +9,5 @@ public class SinergyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SinergyApplication.class, args);
 	}
-
 }
 //Pablo conectado 
