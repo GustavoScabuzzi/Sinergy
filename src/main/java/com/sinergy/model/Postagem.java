@@ -1,4 +1,4 @@
-package org.generation.sinergy.model;
+package com.sinergy.model;
 
 import java.util.Date;
 
