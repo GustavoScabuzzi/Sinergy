@@ -10,4 +10,3 @@ public class SinergyApplication {
 		SpringApplication.run(SinergyApplication.class, args);
 	}
 }
-//Pablo conectado 
