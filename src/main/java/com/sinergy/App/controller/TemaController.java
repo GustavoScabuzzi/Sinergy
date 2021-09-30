@@ -1,4 +1,4 @@
-package com.sinergy.controller;
+package com.sinergy.App.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.sinergy.model.Tema;
-import com.sinergy.repository.RepositorioTema;
+
+import com.sinergy.App.model.Tema;
+import com.sinergy.App.repository.RepositorioTema;
 
 /**
  * Controlador de Tema
@@ -54,25 +55,25 @@ public class TemaController {
 		}
 	}
 
-	@GetMapping("/doacao/{doacao}")
-	public ResponseEntity<List<Tema>> GetByDoacao(@PathVariable Boolean doacao) {
-		return ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(doacao));
-	}
-
-	@GetMapping("/voluntariado/{voluntariado}")
-	public ResponseEntity<List<Tema>> GetByVoluntariado(@PathVariable Boolean voluntariado) {
-		return ResponseEntity.ok(repositorio.findAllByVoluntariadoContainingIgnoreCase(voluntariado));
-	}
-
-	@GetMapping("/informativo/{informativo}")
-	public ResponseEntity<List<Tema>> GetByInformativo(@PathVariable Boolean informativo) {
-		return ResponseEntity.ok(repositorio.findAllByInformativoContainingIgnoreCase(informativo));
-	}
-
-	@GetMapping("/any/{any}")
-	public ResponseEntity<List<Tema>> GetByAny(@PathVariable Boolean any) {
-		return ResponseEntity.ok(repositorio.findAllByAnyContainingIgnoreCase(any));
-	}
+	/*
+	 * @GetMapping("/doacao/{doacao}") public ResponseEntity<List<Tema>>
+	 * GetByDoacao(@PathVariable Boolean doacao) { return
+	 * ResponseEntity.ok(repositorio.findAllByDoacaoContainingIgnoreCase(doacao)); }
+	 * 
+	 * @GetMapping("/voluntariado/{voluntariado}") public ResponseEntity<List<Tema>>
+	 * GetByVoluntariado(@PathVariable Boolean voluntariado) { return
+	 * ResponseEntity.ok(repositorio.findAllByVoluntariadoContainingIgnoreCase(
+	 * voluntariado)); }
+	 * 
+	 * @GetMapping("/informativo/{informativo}") public ResponseEntity<List<Tema>>
+	 * GetByInformativo(@PathVariable Boolean informativo) { return
+	 * ResponseEntity.ok(repositorio.findAllByInformativoContainingIgnoreCase(
+	 * informativo)); }
+	 * 
+	 * @GetMapping("/any/{any}") public ResponseEntity<List<Tema>>
+	 * GetByAny(@PathVariable Boolean any) { return
+	 * ResponseEntity.ok(repositorio.findAllByAnyContainingIgnoreCase(any)); }
+	 */
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Tema> salvar(@Valid @RequestBody Tema novoTema) {

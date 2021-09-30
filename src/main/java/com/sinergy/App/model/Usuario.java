@@ -1,4 +1,4 @@
-package com.sinergy.model;
+package com.sinergy.App.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +31,9 @@ public class Usuario {
 	private @Email String email;
 	private @NotBlank @Size(min = 5, max = 100) String senha;
 
-	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"criador"})
-	private List<Postagem> minhasPostagens = new ArrayList<>();
+	//@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
+	//@JsonIgnoreProperties({"criador"})
+	//private List<Postagem> minhasPostagens = new ArrayList<>();
 	
 
 	public Long getIdUsuario() {
@@ -66,14 +66,6 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public List<Postagem> getMinhasPostagens() {
-		return minhasPostagens;
-	}
-
-	public void setMinhasPostagens(List<Postagem> minhasPostagens) {
-		this.minhasPostagens = minhasPostagens;
 	}
 	
 }

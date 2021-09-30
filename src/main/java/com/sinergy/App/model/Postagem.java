@@ -1,7 +1,8 @@
-package com.sinergy.model;
+package com.sinergy.App.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,29 +31,22 @@ public class Postagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPostagem;
-	
+
 	@Size(min = 5, max = 100)
 	private @NotBlank String titulo;
 
-	
 	@Size(min = 10, max = 100)
 	private @NotBlank String texto;
+
+	private Boolean editado;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPostagem = LocalDate.now();
 
-	@ManyToOne
-	@JoinColumn(name = "idTema")
-	@JsonIgnoreProperties({"postagem"})
-	private Tema temaRelacionado;
-
-	public Long getId() {
-		return idPostagem;
-	}
-
-	public void setId(long id) {
-		this.idPostagem = id;
-	}
+	// @ManyToOne
+	// @JoinColumn(name = "idTema")
+	// @JsonIgnoreProperties({ "postagem" })
+	// private Tema temaRelacionado;
 
 	public String getTitulo() {
 		return titulo;
@@ -78,11 +72,28 @@ public class Postagem {
 		this.dataPostagem = date;
 	}
 
-	public Tema getTemaRelacionado() {
-		return temaRelacionado;
+	public Long getIdPostagem() {
+		return idPostagem;
 	}
 
-	public void setTemaRelacionado(Tema tema) {
-		this.temaRelacionado = tema;
+	public void setIdPostagem(Long idPostagem) {
+		this.idPostagem = idPostagem;
 	}
+
+	public LocalDate getDataPostagem() {
+		return dataPostagem;
+	}
+
+	public void setDataPostagem(LocalDate dataPostagem) {
+		this.dataPostagem = dataPostagem;
+	}
+
+	public Boolean getEditado() {
+		return editado;
+	}
+
+	public void setEditado(Boolean editado) {
+		this.editado = editado;
+	}
+
 }

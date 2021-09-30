@@ -1,4 +1,4 @@
-package com.sinergy.repository;
+package com.sinergy.App.repository;
 
 public interface UsuarioRepositorio {
 

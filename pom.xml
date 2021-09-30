@@ -9,8 +9,8 @@
 		<version>2.5.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Sinergy</groupId>
-	<artifactId>Sinergy</artifactId>
+	<groupId>com.sinergy</groupId>
+	<artifactId>App</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Sinergy</name>
 	<description>Demo project for Spring Boot</description>

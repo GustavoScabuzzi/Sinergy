@@ -1,4 +1,4 @@
-package com.sinergy.model;
+package com.sinergy.App.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.sinergy.controller;
+package com.sinergy.App.controller;
 
 /**
  * Classe Controlador com metodos CRUD
@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinergy.model.Postagem;
-import com.sinergy.repository.RepositorioPostagem;
+import com.sinergy.App.model.Postagem;
+import com.sinergy.App.repository.RepositorioPostagem;
 
 @RestController
 @RequestMapping("/sinergy/posts")
@@ -48,12 +48,12 @@ public class PostagemController {
 
 	@GetMapping("/legenda/{legenda}")
 	public ResponseEntity<List<Postagem>> GetByLegenda(@PathVariable String legenda) {
-		return ResponseEntity.ok(repository.findAllByLegendaContainingIgnoreCase(legenda));
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(legenda));
 	}
 
-	@GetMapping("/editado/{editado}")
-	public ResponseEntity<List<Postagem>> GetByEditado(@PathVariable Boolean editado) {
-		return ResponseEntity.status(201).body(repository.findAllByEditadoContainingIgnoreCase(editado));
+	@GetMapping("/editado/true")
+	public ResponseEntity<List<Postagem>> GetByEditadoTrue() {
+		return ResponseEntity.status(201).body(repository.findAllByEditadoTrue());
 	}
 
 	@PostMapping("/salvar")
