@@ -31,10 +31,9 @@ public class Usuario {
 	private @Email String email;
 	private @NotBlank @Size(min = 5, max = 100) String senha;
 
-	//@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
-	//@JsonIgnoreProperties({"criador"})
-	//private List<Postagem> minhasPostagens = new ArrayList<>();
-	
+	// @OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
+	// @JsonIgnoreProperties({"criador"})
+	// private List<Postagem> minhasPostagens = new ArrayList<>();
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -67,5 +66,5 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 }
