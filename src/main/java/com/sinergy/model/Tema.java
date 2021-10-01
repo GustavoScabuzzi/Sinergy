@@ -1,5 +1,11 @@
-package com.example.Sinergy.modelos;
+package com.sinergy.model;
 
+/**
+ *Classe tema do projeto Sinergy
+ *
+ * @author George
+ * @vs 1.0
+ */
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
