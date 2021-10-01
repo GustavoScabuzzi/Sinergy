@@ -1,4 +1,4 @@
-package com.example.Sinergy;
+package com.sinergy.App;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +9,4 @@ public class SinergyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SinergyApplication.class, args);
 	}
-
 }
-//Pablo conectado 
