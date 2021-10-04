@@ -1,14 +1,14 @@
-package com.sinergy.App.repository;
+package com.sinergy.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.sinergy.App.model.Tema;
+import com.sinergy.models.Tema;
 
 @Repository
-public interface RepositorioTema extends JpaRepository<Tema, Long> {
+public interface TemaRepository extends JpaRepository<Tema, Long> {
 
 	// public List<Tema> findAllByDoacaoContainingIgnoreCase(Boolean doacao);
 	// public List<Tema> findAllByVoluntariadoContainingIgnoreCase(Boolean voluntariado);

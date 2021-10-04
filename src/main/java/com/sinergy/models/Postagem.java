@@ -1,4 +1,4 @@
-package com.sinergy.App.model;
+package com.sinergy.models;
 
 import java.time.LocalDate;
 
