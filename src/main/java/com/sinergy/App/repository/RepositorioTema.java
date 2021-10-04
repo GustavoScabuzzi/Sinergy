@@ -10,9 +10,9 @@ import com.sinergy.App.model.Tema;
 @Repository
 public interface RepositorioTema extends JpaRepository<Tema, Long> {
 
-	// public List<Tema> findAllByDoacaoContainingIgnoreCase(Boolean doacao);
-	// public List<Tema> findAllByVoluntariadoContainingIgnoreCase(Boolean voluntariado);
-	// public List<Tema> findAllByInformativoContainingIgnoreCase(Boolean informativo);
-	// public List<Tema> findAllByAnyContainingIgnoreCase(Boolean any);
+	 public List<Tema> findAllByDoacaoContainingIgnoreCase(Boolean doacao);
+	 public List<Tema> findAllByVoluntariadoContainingIgnoreCase(Boolean voluntariado);
+	 public List<Tema> findAllByInformativoContainingIgnoreCase(Boolean informativo);
+	 public List<Tema> findAllByAnyContainingIgnoreCase(Boolean any);
 
 }
