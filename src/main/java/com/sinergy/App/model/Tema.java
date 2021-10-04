@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *Classe tema do projeto Sinergy
+ * Classe tema do projeto Sinergy
  *
  * @author George
  * @vs 1.0
@@ -37,7 +37,7 @@ public class Tema {
 
 	@NotNull
 	private boolean any;
-	
+
 	public Long getIdTema() {
 		return idTema;
 	}

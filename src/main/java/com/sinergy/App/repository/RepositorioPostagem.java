@@ -19,9 +19,10 @@ public interface RepositorioPostagem extends JpaRepository<Postagem, Long> {
 	 * @since 1.0
 	 */
 	public List<Postagem> findAllByTituloContainingIgnoreCase(String titulo);
-	
+
 	/**
-	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela Postagem
+	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela
+	 * Postagem
 	 * 
 	 * @param editado
 	 * @return lista com as Postagens a partir do valor true
@@ -29,9 +30,10 @@ public interface RepositorioPostagem extends JpaRepository<Postagem, Long> {
 	 * @since 1.0
 	 */
 	public List<Postagem> findAllByEditadoTrue();
-	
+
 	/**
-	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela Postagem
+	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela
+	 * Postagem
 	 * 
 	 * @param editado
 	 * @return lista com as Postagens a partir do valor false
@@ -39,5 +41,5 @@ public interface RepositorioPostagem extends JpaRepository<Postagem, Long> {
 	 * @since 1.0
 	 */
 	public List<Postagem> findAllByEditadoFalse();
-	
+
 }
