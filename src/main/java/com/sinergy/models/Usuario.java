@@ -1,4 +1,4 @@
-package com.sinergy.App.model;
+package com.sinergy.models;
 
 import java.util.ArrayList;
 import java.util.List;

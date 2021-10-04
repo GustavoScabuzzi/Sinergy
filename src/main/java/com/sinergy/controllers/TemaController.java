@@ -1,4 +1,4 @@
-package com.sinergy.App.controller;
+package com.sinergy.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinergy.App.model.Tema;
-import com.sinergy.App.repository.RepositorioTema;
+import com.sinergy.models.Tema;
+import com.sinergy.repositories.TemaRepository;
 
 /**
  * Controlador de Tema
@@ -31,7 +31,7 @@ import com.sinergy.App.repository.RepositorioTema;
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class TemaController {
 
-	private @Autowired RepositorioTema repositorio;
+	private @Autowired TemaRepository repositorio;
 
 	@GetMapping("/todos")
 	public ResponseEntity<List<Tema>> pegarTodos() {
