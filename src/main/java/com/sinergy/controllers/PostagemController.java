@@ -51,10 +51,10 @@ public class PostagemController {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(legenda));
 	}
 
-	@GetMapping("/editado/true")
-	public ResponseEntity<List<Postagem>> GetByEditadoTrue() {
-		return ResponseEntity.status(201).body(repository.findAllByEditadoTrue());
-	}
+//	@GetMapping("/editado/true")
+//	public ResponseEntity<List<Postagem>> GetByEditadoTrue() {
+//		return ResponseEntity.status(201).body(repository.findAllByEditadoTrue());
+//	}
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Postagem> salvar(@Valid @RequestBody Postagem novaPostagem) {

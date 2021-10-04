@@ -41,13 +41,16 @@ public class Tema {
 	private String tema;
 
 	@NotNull
-	private boolean doacao;
+	private Boolean doacao;
 
 	@NotNull
-	private boolean voluntariado;
+	private Boolean voluntariado;
+	
+	@NotNull
+	private Boolean informativo;
 
 	@NotNull
-	private boolean any;
+	private Boolean any;
 
 	public Long getIdTema() {
 		return idTema;
@@ -69,7 +72,7 @@ public class Tema {
 		return doacao;
 	}
 
-	public void setDoacao(boolean doacao) {
+	public void setDoacao(Boolean doacao) {
 		this.doacao = doacao;
 	}
 
@@ -77,15 +80,23 @@ public class Tema {
 		return voluntariado;
 	}
 
-	public void setVoluntariado(boolean voluntariado) {
+	public void setVoluntariado(Boolean voluntariado) {
 		this.voluntariado = voluntariado;
+	}
+
+	public Boolean getInformativo() {
+		return informativo;
+	}
+
+	public void setInformativo(Boolean informativo) {
+		this.informativo = informativo;
 	}
 
 	public boolean isAny() {
 		return any;
 	}
 
-	public void setAny(boolean any) {
+	public void setAny(Boolean any) {
 		this.any = any;
 	}
 

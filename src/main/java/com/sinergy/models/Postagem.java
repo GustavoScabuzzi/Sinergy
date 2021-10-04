@@ -38,15 +38,15 @@ public class Postagem {
 	@Size(min = 10, max = 100)
 	private @NotBlank String texto;
 
-	private Boolean editado;
+	//private Boolean editado;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPostagem = LocalDate.now();
 
-	// @ManyToOne
-	// @JoinColumn(name = "idTema")
-	// @JsonIgnoreProperties({ "postagem" })
-	// private Tema temaRelacionado;
+	@ManyToOne
+	@JoinColumn(name = "idTema")
+	@JsonIgnoreProperties({ "postagem" })
+	private Tema temaRelacionado;
 
 	public String getTitulo() {
 		return titulo;
@@ -88,12 +88,12 @@ public class Postagem {
 		this.dataPostagem = dataPostagem;
 	}
 
-	public Boolean getEditado() {
-		return editado;
-	}
-
-	public void setEditado(Boolean editado) {
-		this.editado = editado;
-	}
+//	public Boolean getEditado() {
+//		return editado;
+//	}
+//
+//	public void setEditado(Boolean editado) {
+//		this.editado = editado;
+//	}
 
 }
