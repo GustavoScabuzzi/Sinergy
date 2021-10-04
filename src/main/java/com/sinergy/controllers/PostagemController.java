@@ -1,4 +1,4 @@
-package com.sinergy.App.controller;
+package com.sinergy.controllers;
 
 /**
  * Classe Controlador com metodos CRUD
@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinergy.App.model.Postagem;
-import com.sinergy.App.repository.RepositorioPostagem;
+import com.sinergy.models.Postagem;
+import com.sinergy.repositories.PostagemRespository;
 
 @RestController
 @RequestMapping("/sinergy/posts")
@@ -34,7 +34,7 @@ import com.sinergy.App.repository.RepositorioPostagem;
 public class PostagemController {
 
 	@Autowired
-	private RepositorioPostagem repository;
+	private PostagemRespository repository;
 
 	@GetMapping("/allPosts")
 	public ResponseEntity<List<Postagem>> GetAll() {
