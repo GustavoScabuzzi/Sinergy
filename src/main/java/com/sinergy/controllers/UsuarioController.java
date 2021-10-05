@@ -1,7 +1,6 @@
 package com.sinergy.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -41,14 +40,8 @@ public class UsuarioController {
 
 	@GetMapping("{id]")
 	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long idUsario) {
-
-		Optional<Usuario> optionalId = repositorio.findById(idUsario);
-
-		if (optionalId.isPresent()) {
-			return ResponseEntity.status(200).body(optionalId.get());
-		} else {
-			return ResponseEntity.status(204).build();
-		}
+		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)) // usa o métod findById, procurando o idUsuario, se achar, a resposta é 200, e apresenta o usuário
+				.orElse(ResponseEntity.status(400).build()); // se ocorrer algo errado, a resposta é 400
 	}
 
 	@PostMapping("/salvar")
@@ -63,16 +56,11 @@ public class UsuarioController {
 	}
 
 	@DeleteMapping("/deletar/{id}")
-	public ResponseEntity<Usuario> deletar(@PathVariable(value = "id_usuario") Long idUsuario) {
-		Optional<Usuario> optionalDeletar = repositorio.findById(idUsuario);
-
-		if (optionalDeletar.isPresent()) {
-			repositorio.deleteById(idUsuario);
-			;
-			return ResponseEntity.status(204).build();
-		} else {
-			return ResponseEntity.status(400).build();
-		}
-
+	public ResponseEntity<Object> deletar(@PathVariable(value = "id_usuario") Long idUsuario) {
+		// procurará o Id com o método findByI
+		return repositorio.findById(idUsuario).map(resp -> {
+			repositorio.deleteById(idUsuario); // vai apagar esse usuário do id inserido
+			return ResponseEntity.status(200).build(); // se apagado, status 200
+		}).orElse(ResponseEntity.status(400).build()); // se ocorrer algo errado, a resposta é 400
 	}
 }
