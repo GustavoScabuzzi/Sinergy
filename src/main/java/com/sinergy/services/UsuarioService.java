@@ -23,10 +23,11 @@ public class UsuarioService {
 	 * 
 	 */
 	public Optional<Object> ChecandoEmail(Usuario usuarioNovo) {
+		// vai o email inserido no banco de dados
 		return repositorio.findByEmail(usuarioNovo.getEmail()).map(usuarioExistente -> {
-			return Optional.empty();
+			return Optional.empty(); // se não existir, o optional é vazio
 		}).orElseGet(() -> {
-			return Optional.ofNullable(repositorio.save(usuarioNovo));
+			return Optional.ofNullable(repositorio.save(usuarioNovo)); // se existir, vai salvar esse usuário
 		});
 
 	}
