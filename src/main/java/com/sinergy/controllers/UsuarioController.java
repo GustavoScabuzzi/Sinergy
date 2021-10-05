@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sinergy.models.Usuario;
 import com.sinergy.repositories.UsuarioRepository;
+import com.sinergy.services.UsuarioService;
 
 @RestController
 @RequestMapping("api/v1/usario")
@@ -25,6 +26,7 @@ import com.sinergy.repositories.UsuarioRepository;
 public class UsuarioController {
 
 	private UsuarioRepository repositorio;
+	private UsuarioService servico;
 
 	@GetMapping("/todos")
 	public ResponseEntity<List<Usuario>> GetAll() {
@@ -51,7 +53,8 @@ public class UsuarioController {
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Object> salvar(@Valid @RequestBody Usuario usuarioNovo) {
-		return ResponseEntity.status(201).body(repositorio.save(usuarioNovo));
+		return servico.ChecandoEmail(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
+				.orElse(ResponseEntity.status(400).build());
 	}
 
 	@PutMapping("/atualizar")
