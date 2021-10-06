@@ -43,17 +43,10 @@ public class Postagem {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPostagem = LocalDate.now();
 
-<<<<<<< HEAD
 	 @ManyToOne
 	 @JoinColumn(name = "idTema")
 	 @JsonIgnoreProperties({ "postagem" })
 	 private Tema temaRelacionado;
-=======
-	@ManyToOne
-	@JoinColumn(name = "idTema")
-	@JsonIgnoreProperties({ "postagem" })
-	private Tema temaRelacionado;
->>>>>>> a6c2bd77d9a660ed792abc4dcadebcd19297d3f1
 
 	public String getTitulo() {
 		return titulo;
