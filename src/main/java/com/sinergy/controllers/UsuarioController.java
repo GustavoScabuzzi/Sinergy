@@ -46,7 +46,7 @@ public class UsuarioController {
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Object> salvar(@Valid @RequestBody Usuario usuarioNovo) {
-		return servico.ChecandoEmail(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
+		return servico.CadastrarUsuario(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
 				.orElse(ResponseEntity.status(400).build());
 	}
 
