@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sinergy.models.Usuario;
+import com.sinergy.modelsDTOs.CredentialsDTO;
+import com.sinergy.modelsDTOs.UserLoginDTO;
 import com.sinergy.repositories.UsuarioRepository;
 import com.sinergy.services.UsuarioService;
 
@@ -42,15 +44,10 @@ public class UsuarioController {
 
 	@GetMapping("{id]")
 	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long idUsario) {
-		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)) // usa o métod
-																									// findById,
-																									// procurando o
-																									// idUsuario, se
-																									// achar, a resposta
-																									// é 200, e
-																									// apresenta o
-																									// usuário
-				.orElse(ResponseEntity.status(400).build()); // se ocorrer algo errado, a resposta é 400
+		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)).orElseThrow(() -> {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+					"Id inexistente, insira um id válido para pesquisa");
+		});
 	}
 
 	@PostMapping("/salvar")
@@ -64,7 +61,15 @@ public class UsuarioController {
 
 	@PutMapping("/atualizar")
 	public ResponseEntity<Usuario> atualizar(@Valid @RequestBody Usuario usuarioNovo) {
-		return ResponseEntity.status(201).body(repositorio.save(usuarioNovo));
+		return servico.atualizaUsuario(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
+				.orElseThrow(() -> {
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Necessário um id válido para alterar.");
+				});
+	}
+
+	@PutMapping("/credenciais")
+	public ResponseEntity<CredentialsDTO> credenciais(@Valid @RequestBody UserLoginDTO usuarioParaAutenticar) {
+		return servico.pegaCredenciais(usuarioParaAutenticar);
 	}
 
 	@DeleteMapping("/deletar/{id}")
