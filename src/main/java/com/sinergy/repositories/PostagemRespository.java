@@ -20,26 +20,26 @@ public interface PostagemRespository extends JpaRepository<Postagem, Long> {
 	 */
 	public List<Postagem> findAllByTituloContainingIgnoreCase(String titulo);
 
-	/**
-	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela
-	 * Postagem
-	 * 
-	 * @param editado
-	 * @return lista com as Postagens a partir do valor true
-	 * @author Gustavo
-	 * @since 1.0
-	 */
-	public List<Postagem> findAllByEditadoTrue();
-
-	/**
-	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela
-	 * Postagem
-	 * 
-	 * @param editado
-	 * @return lista com as Postagens a partir do valor false
-	 * @author Gustavo
-	 * @since 1.0
-	 */
-	public List<Postagem> findAllByEditadoFalse();
+//	/**
+//	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela
+//	 * Postagem
+//	 * 
+//	 * @param editado
+//	 * @return lista com as Postagens a partir do valor true
+//	 * @author Gustavo
+//	 * @since 1.0
+//	 */
+//	public List<Postagem> findAllByEditadoTrue();
+//
+//	/**
+//	 * Metodo utilizado para realizar pesquisa pela coluna Editado da tabela
+//	 * Postagem
+//	 * 
+//	 * @param editado
+//	 * @return lista com as Postagens a partir do valor false
+//	 * @author Gustavo
+//	 * @since 1.0
+//	 */
+//	public List<Postagem> findAllByEditados();
 
 }

@@ -2,7 +2,6 @@ package com.sinergy.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,7 +43,7 @@ public class Postagem {
 	private LocalDate dataPostagem = LocalDate.now();
 
 	@ManyToOne
-	@JoinColumn(name = "idTema")
+	@JoinColumn(name = "id_tema")
 	@JsonIgnoreProperties({ "postagem" })
 	private Tema temaRelacionado;
 
