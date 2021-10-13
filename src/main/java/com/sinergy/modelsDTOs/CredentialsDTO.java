@@ -1,4 +1,4 @@
-package modelsDTOs;
+package com.sinergy.modelsDTOs;
 
 public class CredentialsDTO {
 

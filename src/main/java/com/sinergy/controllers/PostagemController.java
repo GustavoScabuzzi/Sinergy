@@ -42,19 +42,19 @@ public class PostagemController {
 	}
 
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Postagem> GetById(@PathVariable long id) {
+	public ResponseEntity<Postagem> GetById(@PathVariable Long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/legenda/{legenda}")
-	public ResponseEntity<List<Postagem>> GetByLegenda(@PathVariable String legenda) {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(legenda));
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
-	@GetMapping("/editado/true")
-	public ResponseEntity<List<Postagem>> GetByEditadoTrue() {
-		return ResponseEntity.status(201).body(repository.findAllByEditadoTrue());
-	}
+//	@GetMapping("/editados/")
+//	public ResponseEntity<List<Postagem>> GetByEditado() {
+//		return ResponseEntity.status(201).body(repository.findAllByEditados());
+//	}
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Postagem> salvar(@Valid @RequestBody Postagem novaPostagem) {
