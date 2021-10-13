@@ -40,13 +40,20 @@ public class UsuarioController {
 
 	@GetMapping("{id]")
 	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long idUsario) {
-		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)) // usa o métod findById, procurando o idUsuario, se achar, a resposta é 200, e apresenta o usuário
+		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)) // usa o métod
+																									// findById,
+																									// procurando o
+																									// idUsuario, se
+																									// achar, a resposta
+																									// é 200, e
+																									// apresenta o
+																									// usuário
 				.orElse(ResponseEntity.status(400).build()); // se ocorrer algo errado, a resposta é 400
 	}
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Object> salvar(@Valid @RequestBody Usuario usuarioNovo) {
-		return servico.CadastrarUsuario(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
+		return servico.cadastraUsuario(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
 				.orElse(ResponseEntity.status(400).build());
 	}
 
