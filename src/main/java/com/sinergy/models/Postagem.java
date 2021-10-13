@@ -38,15 +38,28 @@ public class Postagem {
 	@Size(min = 10, max = 100)
 	private @NotBlank String texto;
 
-	//private Boolean editado;
+	// private Boolean editado;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPostagem = LocalDate.now();
 
-	 @ManyToOne
-	 @JoinColumn(name = "idTema")
-	 @JsonIgnoreProperties({ "postagem" })
-	 private Tema temaRelacionado;
+	@ManyToOne
+	@JoinColumn(name = "idTema")
+	@JsonIgnoreProperties({ "postagem" })
+	private Tema temaRelacionado;
+
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	@JsonIgnoreProperties({ "minhasPostagens" })
+	private Usuario criador;
+
+	public Long getIdPostagem() {
+		return idPostagem;
+	}
+
+	public void setIdPostagem(Long idPostagem) {
+		this.idPostagem = idPostagem;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -64,28 +77,28 @@ public class Postagem {
 		this.texto = texto;
 	}
 
-	public LocalDate getDate() {
-		return dataPostagem;
-	}
-
-	public void setDate(LocalDate date) {
-		this.dataPostagem = date;
-	}
-
-	public Long getIdPostagem() {
-		return idPostagem;
-	}
-
-	public void setIdPostagem(Long idPostagem) {
-		this.idPostagem = idPostagem;
-	}
-
 	public LocalDate getDataPostagem() {
 		return dataPostagem;
 	}
 
 	public void setDataPostagem(LocalDate dataPostagem) {
 		this.dataPostagem = dataPostagem;
+	}
+
+	public Tema getTemaRelacionado() {
+		return temaRelacionado;
+	}
+
+	public void setTemaRelacionado(Tema temaRelacionado) {
+		this.temaRelacionado = temaRelacionado;
+	}
+
+	public Usuario getCriador() {
+		return criador;
+	}
+
+	public void setCriador(Usuario criador) {
+		this.criador = criador;
 	}
 
 //	public Boolean getEditado() {
