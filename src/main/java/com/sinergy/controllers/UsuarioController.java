@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.sinergy.models.Usuario;
 import com.sinergy.repositories.UsuarioRepository;
@@ -40,14 +42,24 @@ public class UsuarioController {
 
 	@GetMapping("{id]")
 	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long idUsario) {
-		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)) // usa o métod findById, procurando o idUsuario, se achar, a resposta é 200, e apresenta o usuário
+		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)) // usa o métod
+																									// findById,
+																									// procurando o
+																									// idUsuario, se
+																									// achar, a resposta
+																									// é 200, e
+																									// apresenta o
+																									// usuário
 				.orElse(ResponseEntity.status(400).build()); // se ocorrer algo errado, a resposta é 400
 	}
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Object> salvar(@Valid @RequestBody Usuario usuarioNovo) {
-		return servico.CadastrarUsuario(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
-				.orElse(ResponseEntity.status(400).build());
+		return servico.cadastraUsuario(usuarioNovo).map(resp -> ResponseEntity.status(201).body(resp))
+				.orElseThrow(() -> {
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+							"E-mail já cadastrado, cadastre outro e-mail");
+				});
 	}
 
 	@PutMapping("/atualizar")
