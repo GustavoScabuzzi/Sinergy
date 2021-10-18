@@ -2,6 +2,7 @@ package com.sinergy.modelsDTOs;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
  */
 public class UserLoginDTO {
 
-	private @NotBlank @Email String email;
+	private @NotNull @Email String email;
 	private @NotBlank @Size(min = 5, max = 15) String senha;
 
 	public String getEmail() {
