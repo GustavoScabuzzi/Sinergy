@@ -30,10 +30,10 @@ public class Tema {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idTema;
-	
+	private Long idTema;
+
 	@OneToMany(mappedBy = "temaRelacionado", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"temaRelacionado"})
+	@JsonIgnoreProperties({ "temaRelacionado" })
 	private List<Postagem> postagens = new ArrayList<>();
 
 	@NotBlank
@@ -45,7 +45,7 @@ public class Tema {
 
 	@NotNull
 	private Boolean voluntariado;
-	
+
 	@NotNull
 	private Boolean informativo;
 
@@ -60,6 +60,14 @@ public class Tema {
 		this.idTema = idTema;
 	}
 
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
+	}
+
 	public String getTema() {
 		return tema;
 	}
@@ -68,7 +76,7 @@ public class Tema {
 		this.tema = tema;
 	}
 
-	public boolean isDoacao() {
+	public Boolean getDoacao() {
 		return doacao;
 	}
 
@@ -76,7 +84,7 @@ public class Tema {
 		this.doacao = doacao;
 	}
 
-	public boolean isVoluntariado() {
+	public Boolean getVoluntariado() {
 		return voluntariado;
 	}
 
@@ -92,16 +100,12 @@ public class Tema {
 		this.informativo = informativo;
 	}
 
-	public boolean isAny() {
+	public Boolean getAny() {
 		return any;
 	}
 
 	public void setAny(Boolean any) {
 		this.any = any;
-	}
-
-	public void setIdTema(long idTema) {
-		this.idTema = idTema;
 	}
 
 }
