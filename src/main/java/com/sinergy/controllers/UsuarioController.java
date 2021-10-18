@@ -24,7 +24,7 @@ import com.sinergy.repositories.UsuarioRepository;
 import com.sinergy.services.UsuarioService;
 
 @RestController
-@RequestMapping("api/v1/usario")
+@RequestMapping("api/v1/usuario")
 @CrossOrigin("*")
 public class UsuarioController {
 
