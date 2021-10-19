@@ -30,7 +30,7 @@ public class Usuario {
 
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idUsuario;
 	private @NotBlank String nome;
-	private @Email String email;
+	private @NotBlank @Email String email;
 	private @NotBlank @Size(min = 5, max = 100) String senha;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)

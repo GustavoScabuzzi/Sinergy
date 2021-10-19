@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,12 +25,12 @@ import com.sinergy.repositories.UsuarioRepository;
 import com.sinergy.services.UsuarioService;
 
 @RestController
-@RequestMapping("api/v1/usario")
+@RequestMapping("/api/v1/usuario")
 @CrossOrigin("*")
 public class UsuarioController {
 
-	private UsuarioRepository repositorio;
-	private UsuarioService servico;
+	private @Autowired UsuarioRepository repositorio;
+	private @Autowired UsuarioService servico;
 
 	@GetMapping("/todos")
 	public ResponseEntity<List<Usuario>> GetAll() {

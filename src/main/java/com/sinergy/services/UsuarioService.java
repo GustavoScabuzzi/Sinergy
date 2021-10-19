@@ -149,7 +149,7 @@ public class UsuarioService {
 		return repository.findByEmail(usuariopraAutenticar.getEmail()).map(resp -> {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-			if (encoder.matches(usuariopraAutenticar.getEmail(), resp.getSenha())) {
+			if (encoder.matches(usuariopraAutenticar.getSenha(), resp.getSenha())) {
 				CredentialsDTO objetoCredentials = new CredentialsDTO();
 
 				objetoCredentials
