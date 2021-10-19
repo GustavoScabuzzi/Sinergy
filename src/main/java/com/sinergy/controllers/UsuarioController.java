@@ -43,7 +43,7 @@ public class UsuarioController {
 		}
 	}
 
-	@GetMapping("{id]")
+	@GetMapping("/{id_usuario}")
 	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long idUsario) {
 		return repositorio.findById(idUsario).map(resp -> ResponseEntity.status(200).body(resp)).orElseThrow(() -> {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,

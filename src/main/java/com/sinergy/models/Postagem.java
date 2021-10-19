@@ -43,12 +43,12 @@ public class Postagem {
 	private LocalDate dataPostagem = LocalDate.now();
 
 	@ManyToOne
-	@JoinColumn(name = "id_tema")
-	@JsonIgnoreProperties({ "postagem" })
+	@JoinColumn(name = "fk_tema")
+	@JsonIgnoreProperties({ "postagens" })
 	private Tema temaRelacionado;
 
 	@ManyToOne
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "fk_usuario")
 	@JsonIgnoreProperties({ "minhasPostagens" })
 	private Usuario criador;
 
