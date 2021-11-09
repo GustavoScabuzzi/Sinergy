@@ -40,17 +40,17 @@ public class Postagem {
 	// private Boolean editado;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dataPostagem = LocalDate.now();
+	private LocalDate data = LocalDate.now();
 
 	@ManyToOne
 	@JoinColumn(name = "fk_tema")
 	@JsonIgnoreProperties({ "postagens" })
-	private Tema temaRelacionado;
+	private Tema tema;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_usuario")
-	@JsonIgnoreProperties({ "minhasPostagens" })
-	private Usuario criador;
+	@JsonIgnoreProperties({ "postagens" })
+	private Usuario usuario;
 
 	public Long getIdPostagem() {
 		return idPostagem;
@@ -76,29 +76,30 @@ public class Postagem {
 		this.texto = texto;
 	}
 
-	public LocalDate getDataPostagem() {
-		return dataPostagem;
+	public LocalDate getData() {
+		return data;
 	}
 
-	public void setDataPostagem(LocalDate dataPostagem) {
-		this.dataPostagem = dataPostagem;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 
-	public Tema getTemaRelacionado() {
-		return temaRelacionado;
+	public Tema getTema() {
+		return tema;
 	}
 
-	public void setTemaRelacionado(Tema temaRelacionado) {
-		this.temaRelacionado = temaRelacionado;
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 
-	public Usuario getCriador() {
-		return criador;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setCriador(Usuario criador) {
-		this.criador = criador;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+
 
 //	public Boolean getEditado() {
 //		return editado;

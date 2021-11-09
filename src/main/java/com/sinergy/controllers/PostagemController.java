@@ -29,7 +29,7 @@ import com.sinergy.models.Postagem;
 import com.sinergy.repositories.PostagemRespository;
 
 @RestController
-@RequestMapping("/sinergy/posts")
+@RequestMapping("/api/v1/postagens")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class PostagemController {
 
