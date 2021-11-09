@@ -55,24 +55,9 @@ public class TemaController {
 		}
 	}
 
-	@GetMapping("/doacao/{doacao}")
-	public ResponseEntity<List<Tema>> GetByDoacao(@PathVariable Boolean doacao) {
-		return ResponseEntity.ok(repositorio.findAllByDoacao(doacao));
-	}
-
-	@GetMapping("/voluntariado/{voluntariado}")
-	public ResponseEntity<List<Tema>> GetByVoluntariado(@PathVariable Boolean voluntariado) {
-		return ResponseEntity.ok(repositorio.findAllByVoluntariado(voluntariado));
-	}
-
-	@GetMapping("/informativo/{informativo}")
-	public ResponseEntity<List<Tema>> GetByInformativo(@PathVariable Boolean informativo) {
-		return ResponseEntity.ok(repositorio.findAllByInformativo(informativo));
-	}
-
-	@GetMapping("/any/{any}")
-	public ResponseEntity<List<Tema>> GetByAny(@PathVariable Boolean any) {
-		return ResponseEntity.ok(repositorio.findAllByAny(any));
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<Tema>> GetByDoacao(@PathVariable String titulo) {
+		return ResponseEntity.ok(repositorio.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
 	@PostMapping("/salvar")
