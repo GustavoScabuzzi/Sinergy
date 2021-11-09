@@ -7,10 +7,15 @@ package com.sinergy.modelsDTOs;
  */
 
 public class CredentialsDTO {
+	
 	private Long idUsuario;
+	
 	private String nome;
+	
 	private String email;
+	
 	private String senha;
+	
 	private String token;
 
 	public String getEmail() {

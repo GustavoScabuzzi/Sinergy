@@ -30,13 +30,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Usuario {
 
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idUsuario;
+	
 	private @NotBlank String nome;
+	
 	private @NotNull @Email String email;
-	private @NotBlank @Size(min = 5, max = 100) String senha;
+	
+	private @NotBlank @Size(min = 8) String senha;
 
-	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"criador"})
-	private List<Postagem> minhasPostagens = new ArrayList<>();
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({"usuario"})
+	private List<Postagem> postagens = new ArrayList<>();
 
 	public Long getIdUsuario() {
 		return idUsuario;
