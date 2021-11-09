@@ -34,7 +34,7 @@ public class Tema {
 	@NotBlank
 	@Size(min = 5, max = 100)
 	private String titulo;
-	
+
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({ "tema" })
 	private List<Postagem> postagens = new ArrayList<>();
@@ -45,6 +45,14 @@ public class Tema {
 
 	public void setIdTema(Long idTema) {
 		this.idTema = idTema;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public List<Postagem> getPostagens() {
