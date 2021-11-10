@@ -73,7 +73,7 @@ public class UsuarioController {
 		return servico.pegaCredenciais(usuarioParaAutenticar);
 	}
 
-	@DeleteMapping("/deletar/{id}")
+	@DeleteMapping("/deletar/{id_usuario}")
 	public ResponseEntity<Object> deletar(@PathVariable(value = "id_usuario") Long idUsuario) {
 		// procurará o Id com o método findByI
 		return repositorio.findById(idUsuario).map(resp -> {
