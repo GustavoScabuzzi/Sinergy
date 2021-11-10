@@ -56,36 +56,7 @@ public class UsuarioService {
 			return Optional.ofNullable(repository.save(usuarioNovo)); // se existir, vai salvar esse usuário
 		});
 	}
-
-	/*
-	 * public Usuario CadastrarUsuario(Usuario usuario) { BCryptPasswordEncoder
-	 * encoder = new BCryptPasswordEncoder();
-	 * 
-	 * String senhaEncoder = encoder.encode(usuario.getSenha());
-	 * usuario.setSenha(senhaEncoder);
-	 * 
-	 * return repository.save(usuario); }
-	 */
-
-	/*
-	 * public Optional<UserLoginDTO> Logar(Optional<UserLoginDTO> user) {
-	 * BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	 * Optional<Usuario> usuario = repository.findById(user.get().get);
-	 * 
-	 * if (usuario.isPresent()) { if (encoder.matches(user.get().getSenha(),
-	 * usuario.get().getSenha())) {
-	 * 
-	 * String auth = user.get().getUsuario() + ":" + user.get().getSenha(); byte[]
-	 * encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-	 * String authHeader = "Basic " + new String(encodeAuth);
-	 * 
-	 * user.get().setToken(authHeader); user.get().setNome(usuario.get().getNome());
-	 * 
-	 * return user; } }
-	 * 
-	 * return null; }
-	 */
-
+	
 	/**
 	 * Metodo utilizado para atualizar usuario no banco
 	 * 
@@ -158,6 +129,8 @@ public class UsuarioService {
 				objetoCredentials.setNome(resp.getNome());
 				objetoCredentials.setEmail(resp.getEmail());
 				objetoCredentials.setSenha(resp.getSenha());
+				objetoCredentials.setTipo(resp.getTipo());
+				objetoCredentials.setFoto(resp.getFoto());
 
 				return ResponseEntity.status(201).body(objetoCredentials);
 			} else {
