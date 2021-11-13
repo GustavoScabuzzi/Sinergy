@@ -31,13 +31,12 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPostagem;
 
-	@Size(min = 5, max = 100)
-	private @NotBlank String titulo;
+	private String titulo;
+	
+	private String foto;
 
-	@Size(min = 10, max = 100)
+	@Size(min = 5, max = 200)
 	private @NotBlank String texto;
-
-	// private Boolean editado;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data = LocalDate.now();
@@ -66,6 +65,14 @@ public class Postagem {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getTexto() {
@@ -99,14 +106,5 @@ public class Postagem {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
-
-//	public Boolean getEditado() {
-//		return editado;
-//	}
-//
-//	public void setEditado(Boolean editado) {
-//		this.editado = editado;
-//	}
 
 }

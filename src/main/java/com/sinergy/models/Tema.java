@@ -1,5 +1,6 @@
 package com.sinergy.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -34,6 +36,11 @@ public class Tema {
 	@NotBlank
 	@Size(min = 5, max = 100)
 	private String titulo;
+	
+	private String criador;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate data = LocalDate.now();
 
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({ "tema" })
@@ -55,6 +62,22 @@ public class Tema {
 		this.titulo = titulo;
 	}
 
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public String getCriador() {
+		return criador;
+	}
+
+	public void setCriador(String criador) {
+		this.criador = criador;
+	}
+
 	public List<Postagem> getPostagens() {
 		return postagens;
 	}
@@ -62,5 +85,7 @@ public class Tema {
 	public void setPostagens(List<Postagem> postagens) {
 		this.postagens = postagens;
 	}
+	
+	
 
 }
