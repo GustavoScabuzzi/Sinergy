@@ -25,8 +25,8 @@ public class SwaggerConfig {
 
 	public static ApiInfo metadata() {
 		return new ApiInfoBuilder()
-				.title("API - Sinergy")
-				.description("Projeto API Spring - Sinergy")
+				.title("Sinergy - PI")
+				.description("Projeto API Spring - Sinergy - Generation Brasil")
 				.version("1.0.0")
 				.license("Apache License Version 2.0")
 				.licenseUrl("https://github.com/GustavoScabuzzi/Sinergy")
@@ -34,7 +34,7 @@ public class SwaggerConfig {
 	}
 
 	private static Contact contact() {
-		return new Contact("Gustavo Scabuzzi", "https://github.com/GustavoScabuzzi/Sinergy", "Gustavo@hotmail.com");
+		return new Contact("Gustavo Scabuzzi", "https://github.com/GustavoScabuzzi/Sinergy", "gustavo-gsg@hotmail.com");
 	}
 
 	@SuppressWarnings("unused")

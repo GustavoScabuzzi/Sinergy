@@ -70,6 +70,8 @@ public class UsuarioService {
 	public Optional<Usuario> atualizaUsuario(Usuario usuarioParaAtualizar) {
 		return repository.findById(usuarioParaAtualizar.getIdUsuario()).map(resp -> {
 			resp.setNome(usuarioParaAtualizar.getNome());
+			resp.setFoto(usuarioParaAtualizar.getFoto());
+			resp.setEmail(usuarioParaAtualizar.getEmail());
 			resp.setSenha(encriptadorDeSenha(usuarioParaAtualizar.getSenha()));
 			return Optional.ofNullable(repository.save(resp));
 

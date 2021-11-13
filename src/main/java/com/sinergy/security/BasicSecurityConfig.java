@@ -22,15 +22,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/v1/usuario/salvar").permitAll()
-//				.antMatchers(HttpMethod.PUT, "/api/v1/usuario/credenciais").permitAll().anyRequest().authenticated()
-//				.and().httpBasic().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//				.and().cors().and().csrf().disable();
-//
-//	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/api/v1/usuario/salvar").permitAll().antMatchers("/api/v1/usuario/credenciais")
@@ -38,14 +29,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
 				.csrf().disable();
 	}
-
-//	@Override
-// 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(service);
-//		
-//		auth.inMemoryAuthentication()
-//			.withUser("usuario").password(senhaEncoder().encode("senha")).authorities("ROLE_ADMIN");
-// 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
