@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.sinergy.models.Postagem;
 
 @Repository
-public interface PostagemRespository extends JpaRepository<Postagem, Long> {
+public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 
 	/**
 	 * Metodo utilizado para realizar pesquisa pela coluna titulo da tabela Postagem
