@@ -14,7 +14,7 @@ public class UserLoginDTO {
 
 	private @NotNull @Email String email;
 	
-	private @NotBlank @Size(min = 5) String senha;
+	private @NotBlank @Size(min = 8) String senha;
 
 	public String getEmail() {
 		return email;
