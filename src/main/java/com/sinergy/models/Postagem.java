@@ -38,7 +38,6 @@ public class Postagem {
 	
 	private String foto;
 
-	@Size(min = 5)
 	private @NotBlank String texto;
 
 	@Temporal(TemporalType.TIMESTAMP)

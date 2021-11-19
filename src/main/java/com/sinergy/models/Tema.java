@@ -34,7 +34,6 @@ public class Tema {
 	private Long idTema;
 
 	@NotBlank
-	@Size(min = 5, max = 100)
 	private String titulo;
 	
 	private String criador;

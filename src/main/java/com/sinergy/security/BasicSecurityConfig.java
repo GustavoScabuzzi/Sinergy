@@ -19,7 +19,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder senhaEncoder() {
 		return new BCryptPasswordEncoder();
-
 	}
 
 	@Override
