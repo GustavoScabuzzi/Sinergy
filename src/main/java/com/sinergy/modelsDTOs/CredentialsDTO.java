@@ -23,6 +23,8 @@ public class CredentialsDTO {
 	private String tipo;
 	
 	private String descricao;
+	
+	private Boolean userAtivo;
 
 	public String getEmail() {
 		return email;
@@ -86,6 +88,14 @@ public class CredentialsDTO {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Boolean getUserAtivo() {
+		return userAtivo;
+	}
+
+	public void setUserAtivo(Boolean userAtivo) {
+		this.userAtivo = userAtivo;
 	}
 
 }

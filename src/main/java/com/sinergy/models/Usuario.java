@@ -42,6 +42,8 @@ public class Usuario {
 	private String descricao;
 	
 	private String tipo;
+	
+	private @NotNull Boolean userAtivo;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({"usuario"})
@@ -101,6 +103,14 @@ public class Usuario {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public Boolean getUserAtivo() {
+		return userAtivo;
+	}
+
+	public void setUserAtivo(Boolean userAtivo) {
+		this.userAtivo = userAtivo;
 	}
 
 	public List<Postagem> getPostagens() {
