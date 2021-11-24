@@ -1,6 +1,7 @@
 package com.sinergy.models;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -35,11 +38,12 @@ public class Postagem {
 	
 	private String foto;
 
-	@Size(min = 5, max = 200)
-	private @NotBlank String texto;
+	@NotBlank
+	@Size(min = 10, max = 1000)
+	private String texto;
 
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private LocalDate data = LocalDate.now();
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
 	@JoinColumn(name = "fk_tema")
@@ -83,12 +87,12 @@ public class Postagem {
 		this.texto = texto;
 	}
 
-	public LocalDate getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public Tema getTema() {

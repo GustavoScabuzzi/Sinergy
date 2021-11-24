@@ -72,6 +72,7 @@ public class UsuarioService {
 			resp.setNome(usuarioParaAtualizar.getNome());
 			resp.setFoto(usuarioParaAtualizar.getFoto());
 			resp.setEmail(usuarioParaAtualizar.getEmail());
+			resp.setDescricao(usuarioParaAtualizar.getDescricao());
 			resp.setSenha(encriptadorDeSenha(usuarioParaAtualizar.getSenha()));
 			return Optional.ofNullable(repository.save(resp));
 
@@ -133,6 +134,7 @@ public class UsuarioService {
 				objetoCredentials.setSenha(resp.getSenha());
 				objetoCredentials.setTipo(resp.getTipo());
 				objetoCredentials.setFoto(resp.getFoto());
+				objetoCredentials.setDescricao(resp.getDescricao());
 
 				return ResponseEntity.status(201).body(objetoCredentials);
 			} else {
