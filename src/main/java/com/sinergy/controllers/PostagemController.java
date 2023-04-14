@@ -13,6 +13,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -118,5 +119,10 @@ public class PostagemController {
 		} else {
 			return ResponseEntity.status(400).build();
 		}
+	}
+
+	@GetMapping
+	public ResponseEntity<List<Postagem>> getAll() {
+		return null;
 	}
 }
