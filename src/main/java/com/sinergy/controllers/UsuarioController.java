@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sinergy.models.Usuario;
-import com.sinergy.modelsDTOs.CredentialsDTO;
-import com.sinergy.modelsDTOs.UserLoginDTO;
+import com.sinergy.DTO.CredentialsDTO;
+import com.sinergy.DTO.UserLoginDTO;
 import com.sinergy.repositories.UsuarioRepository;
 import com.sinergy.services.UsuarioService;
 
@@ -81,7 +81,7 @@ public class UsuarioController {
 				});
 	}
 
-	@ApiOperation(value = "Atualizar usuario existente")
+	@ApiOperation(value = "Atualizar usuario existente! ok")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Retorna usuario atualizado"),
 			@ApiResponse(code = 400, message = "ID de usuario invalido")

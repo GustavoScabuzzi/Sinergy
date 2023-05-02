@@ -1,4 +1,4 @@
-package com.sinergy.modelsDTOs;
+package com.sinergy.DTO;
 
 /**
  * @author George

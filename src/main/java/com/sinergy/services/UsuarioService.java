@@ -2,6 +2,7 @@ package com.sinergy.services;
 
 import java.nio.charset.Charset;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.sinergy.models.Usuario;
-import com.sinergy.modelsDTOs.CredentialsDTO;
-import com.sinergy.modelsDTOs.UserLoginDTO;
+import com.sinergy.DTO.CredentialsDTO;
+import com.sinergy.DTO.UserLoginDTO;
 import com.sinergy.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {
 
+	private static final String EMAIL_REGEX_PATTERN = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+			+ "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 	private @Autowired UsuarioRepository repository;
 
 	/**
@@ -52,8 +55,14 @@ public class UsuarioService {
 		return repository.findByEmail(usuarioNovo.getEmail()).map(usuarioExistente -> {
 			return Optional.empty(); // se não existir, o optional é vazio
 		}).orElseGet(() -> {
-			usuarioNovo.setSenha(encriptadorDeSenha(usuarioNovo.getSenha())); // encriptografa a senha
-			return Optional.ofNullable(repository.save(usuarioNovo)); // se existir, vai salvar esse usuário
+			if(isValidEmail(usuarioNovo.getEmail())) {
+				usuarioNovo.setSenha(encriptadorDeSenha(usuarioNovo.getSenha())); // encriptografa a senha
+				return Optional.ofNullable(repository.save(usuarioNovo)); // se existir, vai salvar esse usuário
+
+			} else {
+				return Optional.empty();
+			}
+
 		});
 	}
 	
@@ -105,6 +114,10 @@ public class UsuarioService {
 		return "Basic " + new String(estruturaBase64);
 	}
 
+	public static boolean isValidEmail(String email) {
+		return Pattern.compile(EMAIL_REGEX_PATTERN).matcher(email).matches();
+	}
+
 	/**
 	 * Metodo utilizado para pegar credenciais do usuario com Tokem (Formato Basic),
 	 * este método sera utilizado para retornar ao front o token utilizado para ter
@@ -119,15 +132,15 @@ public class UsuarioService {
 	 * 
 	 */
 
-	public ResponseEntity<CredentialsDTO> pegaCredenciais(UserLoginDTO usuariopraAutenticar) {
-		return repository.findByEmail(usuariopraAutenticar.getEmail()).map(resp -> {
+	public ResponseEntity<CredentialsDTO> pegaCredenciais(UserLoginDTO usuarioParaAutenticar) {
+		return repository.findByEmail(usuarioParaAutenticar.getEmail()).map(resp -> {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-			if (encoder.matches(usuariopraAutenticar.getSenha(), resp.getSenha())) {
+			if (encoder.matches(usuarioParaAutenticar.getSenha(), resp.getSenha())) {
 				CredentialsDTO objetoCredentials = new CredentialsDTO();
 
 				objetoCredentials
-						.setToken(geradorDeToken(usuariopraAutenticar.getEmail(), usuariopraAutenticar.getSenha()));
+						.setToken(geradorDeToken(usuarioParaAutenticar.getEmail(), usuarioParaAutenticar.getSenha()));
 				objetoCredentials.setIdUsuario(resp.getIdUsuario());
 				objetoCredentials.setNome(resp.getNome());
 				objetoCredentials.setEmail(resp.getEmail());

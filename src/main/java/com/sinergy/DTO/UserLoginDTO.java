@@ -1,4 +1,4 @@
-package com.sinergy.modelsDTOs;
+package com.sinergy.DTO;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
